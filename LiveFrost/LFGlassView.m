@@ -179,19 +179,23 @@
 }
 
 - (void) refresh {
-	if (!self.superview) {
+	if (!self.blurSuperView) {
+        self.blurSuperView = self.superview;
+    }
+    
+	if (!self.blurSuperView) {
 		return;
 	}
 	
 	[self recreateImageBuffersIfNeeded];
-		
+    
 	CGContextRef effectInContext = _effectInContext;
 	CGContextRef effectOutContext = _effectOutContext;
 	vImage_Buffer effectInBuffer = _effectInBuffer;
 	vImage_Buffer effectOutBuffer = _effectOutBuffer;
 	
 	self.hidden = YES;
-	[self.superview.layer renderInContext:effectInContext];
+	[self.blurSuperView.layer renderInContext:effectInContext];
 	self.hidden = NO;
 	
 	uint32_t blurKernel = _precalculatedBlurKernel;
