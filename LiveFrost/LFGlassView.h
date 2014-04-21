@@ -33,6 +33,7 @@
 @property (nonatomic, assign) NSUInteger frameInterval;
 
 @property (nonatomic, assign, getter=isLiveBlurring) BOOL liveBlurring;
+@property (nonatomic, strong) UIView *blurringView;
 
 - (BOOL) blurOnceIfPossible;
 

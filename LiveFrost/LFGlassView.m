@@ -320,9 +320,9 @@
 	}
 	_currentFrameInterval = 0;
 	
-	UIView *superview = self.superview;
+	UIView *blurringView = self.blurringView ? : self.superview;
 #ifdef DEBUG
-	NSParameterAssert(superview);
+	NSParameterAssert(blurringView);
 	NSParameterAssert(self.window);
 	NSParameterAssert(_effectInContext);
 	NSParameterAssert(_effectOutContext);
@@ -334,7 +334,7 @@
 	vImage_Buffer effectOutBuffer = _effectOutBuffer;
 	
 	self.hidden = YES;
-	[superview.layer renderInContext:effectInContext];
+	[blurringView.layer renderInContext:effectInContext];
 	self.hidden = NO;
 	
 	uint32_t blurKernel = _precalculatedBlurKernel;
