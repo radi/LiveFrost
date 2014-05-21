@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2013-2014 Evadne Wu and Nicholas Levin
+// Copyright (c) 2014 Evadne Wu and Nicholas Levin
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,20 +20,11 @@
 // THE SOFTWARE.
 //
 
-@class LFGlassLayer;
+#ifndef LiveFrost_LFDefines_h
+#define LiveFrost_LFDefines_h
 
-@interface LFGlassView : UIView
+#include <CoreGraphics/CGGeometry.h>
 
-@property (nonatomic, assign) CGFloat blurRadius;
-@property (nonatomic, assign) BOOL blurRadiusAnimationEnabled;
-@property (nonatomic, assign) CGFloat scaleFactor;
+extern const CGPoint LFPointNull;
 
-@property (nonatomic, assign) NSUInteger frameInterval;
-
-@property (nonatomic, assign, getter=isLiveBlurring) BOOL liveBlurring;
-
-- (BOOL) blurOnceIfPossible;
-
-@property (nonatomic, weak, readonly) LFGlassLayer *glassLayer;
-
-@end
+#endif

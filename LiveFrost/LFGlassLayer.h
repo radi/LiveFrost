@@ -20,20 +20,26 @@
 // THE SOFTWARE.
 //
 
-@class LFGlassLayer;
+@import Accelerate.vImage;
+@import QuartzCore.CALayer;
+#import "LFDisplayBridgeTriggering.h"
 
-@interface LFGlassView : UIView
+@interface LFGlassLayer : CALayer <LFDisplayBridgeTriggering>
 
 @property (nonatomic, assign) CGFloat blurRadius;
-@property (nonatomic, assign) BOOL blurRadiusAnimationEnabled;
 @property (nonatomic, assign) CGFloat scaleFactor;
 
 @property (nonatomic, assign) NSUInteger frameInterval;
 
-@property (nonatomic, assign, getter=isLiveBlurring) BOOL liveBlurring;
-
 - (BOOL) blurOnceIfPossible;
 
-@property (nonatomic, weak, readonly) LFGlassLayer *glassLayer;
+// optional properties for greater customization
+@property (nonatomic, weak) CALayer *customBlurTargetLayer;
+@property (nonatomic, assign) CGRect customBlurBounds;
+@property (nonatomic, assign) CGPoint customBlurPosition;
+@property (nonatomic, assign) CGPoint customBlurAnchorPoint;
+@property (nonatomic, assign) CGRect customBlurFrame;
+
+- (void) resetCustomPositioning;
 
 @end

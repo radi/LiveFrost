@@ -20,20 +20,6 @@
 // THE SOFTWARE.
 //
 
-@class LFGlassLayer;
-
-@interface LFGlassView : UIView
-
-@property (nonatomic, assign) CGFloat blurRadius;
-@property (nonatomic, assign) BOOL blurRadiusAnimationEnabled;
-@property (nonatomic, assign) CGFloat scaleFactor;
-
-@property (nonatomic, assign) NSUInteger frameInterval;
-
-@property (nonatomic, assign, getter=isLiveBlurring) BOOL liveBlurring;
-
-- (BOOL) blurOnceIfPossible;
-
-@property (nonatomic, weak, readonly) LFGlassLayer *glassLayer;
-
+@protocol LFDisplayBridgeTriggering <NSObject>
+- (void) refresh;
 @end
